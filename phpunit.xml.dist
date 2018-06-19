@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.2/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         forceCoversAnnotation="true"
+         beStrictAboutCoversAnnotation="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutTodoAnnotatedTests="true"
+         verbose="true">
+    <php>
+        <var name="lookupInNameserver" value="8.8.8.8"/>
+        <var name="lookupDomain" value="google.com"/>
+        <var name="lookupDomainValueRecordA" value="172.217.17.78"/>
+        <var name="lookupDomainValueRecordMx" value="aspmx.l.google.com"/>
+        <var name="lookupDomainValueRecordMxPrio" value="10"/>
+        <var name="lookupDomainValueRecordSoa" value="ns1.google.com. dns-admin.google.com. 201166561 900 900 1800 60"/>
+        <var name="lookupDomainValueRecordTxt" value='"v=spf1 include:_spf.google.com ~all"'/>
+    </php>
+    <testsuites>
+        <testsuite name="default">
+            <directory suffix="Test.php">tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
+</phpunit>
