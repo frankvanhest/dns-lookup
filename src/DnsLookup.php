@@ -112,17 +112,18 @@ class DnsLookup
             if ($nextDigLine !== null) {
                 $nextDigLine = str_replace("\t\t", ' ', $nextDigLine);
                 $recordNext = explode(' ', $nextDigLine, 5);
-                if (strstr($recordNext[0], $this->domain) === false && $recordNext[3] !== 'PTR') {
+                $type = $recordNext[3] ?? '';
+                if (strstr($recordNext[0], $this->domain) === false && $type !== 'PTR') {
                     if (strstr($record[0], $this->domain) !== false) {
                         $recordStorage = $record;
                         continue;
                     }
-                    $recordStorage[4] .= ' ' . $this->cleanUpValue($record[4]);
+                    $recordStorage[4] .= ' ' . $this->cleanUpValue($record[2]);
                     continue;
                 }
             } else {
                 if (!empty($recordStorage)) {
-                    $recordStorage[4] .= ' ' . $this->cleanUpValue($record[4]);
+                    $recordStorage[4] .= ' ' . $this->cleanUpValue($record[2]);
                 }
             }
 
