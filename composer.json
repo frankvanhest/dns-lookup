@@ -1,6 +1,6 @@
 {
   "name": "frankvanhest/dns-lookup",
-  "description": "Simple lbrary to retrieve DNS records with default OS resolver or specific nameserver",
+  "description": "Simple library to retrieve DNS records with default OS resolver or specific nameserver",
   "type": "library",
   "keywords": [
     "dns",

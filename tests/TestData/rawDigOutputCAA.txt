@@ -1,0 +1,1 @@
+domain.com.		21599 IN CAA 0 issue "pki.domain"

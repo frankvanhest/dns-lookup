@@ -25,6 +25,11 @@ class DnsRecord
     private $prio;
 
     /**
+     * @var int
+     */
+    private $ttl;
+
+    /**
      * @var string
      */
     private $type;
@@ -37,16 +42,18 @@ class DnsRecord
     /**
      * DnsRecord constructor
      *
-     * @param string   $name
-     * @param string   $type
-     * @param string   $value
+     * @param string $name
+     * @param string $type
+     * @param string $value
+     * @param int $ttl
      * @param int|null $prio
      */
-    public function __construct(string $name, string $type, string $value, int $prio = null)
+    public function __construct(string $name, string $type, string $value, int $ttl, ?int $prio = null)
     {
         $this->name  = $name;
         $this->type  = $type;
         $this->value = $value;
+        $this->ttl   = $ttl;
         $this->prio  = $prio;
     }
 
@@ -85,6 +92,14 @@ class DnsRecord
     final public function getPrio(): ?int
     {
         return $this->prio;
+    }
+
+    /**
+     * @return int
+     */
+    final public function getTtl(): int
+    {
+        return $this->ttl;
     }
 
     /**

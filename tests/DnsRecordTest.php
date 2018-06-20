@@ -10,12 +10,17 @@ namespace FrankVanHest\DnsLookup\Tests;
 use FrankVanHest\DnsLookup\DnsRecord;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class DnsRecordTest
+ * @package FrankVanHest\DnsLookup\Tests
+ */
 class DnsRecordTest extends TestCase
 {
     private const RECORD_NAME = 'www.domain.tld';
     private const RECORD_PRIO = 10;
     private const RECORD_TYPE = 'A';
     private const RECORD_VALUE = '127.0.0.1';
+    private const RECORD_TTL = 3600;
 
     /**
      * An instance should be able to be created with a prio
@@ -24,7 +29,9 @@ class DnsRecordTest extends TestCase
      */
     public function testCanBeContructedWithPrio(): DnsRecord
     {
-        $dnsRecord = new DnsRecord(self::RECORD_NAME, self::RECORD_TYPE, self::RECORD_VALUE, self::RECORD_PRIO);
+        $dnsRecord = new DnsRecord(
+            self::RECORD_NAME, self::RECORD_TYPE, self::RECORD_VALUE, self::RECORD_TTL, self::RECORD_PRIO
+        );
 
         $this->assertInstanceOf(DnsRecord::class, $dnsRecord);
 
@@ -38,26 +45,9 @@ class DnsRecordTest extends TestCase
      */
     public function testCanBeContructedWithoutPrio(): void
     {
-        $dnsRecord = new DnsRecord(self::RECORD_NAME, self::RECORD_TYPE, self::RECORD_VALUE);
+        $dnsRecord = new DnsRecord(self::RECORD_NAME, self::RECORD_TYPE, self::RECORD_VALUE, self::RECORD_TTL);
 
         $this->assertInstanceOf(DnsRecord::class, $dnsRecord);
-    }
-
-    /**
-     * All the properties should be the same as given when constructing the instance
-     *
-     * @depends testCanBeContructedWithPrio
-     *
-     * @param DnsRecord $dnsRecord
-     *
-     * @return void
-     */
-    public function testPropertiesShouldBeSameAsGivenInConstructor(DnsRecord $dnsRecord): void
-    {
-        $this->assertSame(self::RECORD_NAME, $dnsRecord->getName());
-        $this->assertSame(self::RECORD_TYPE, $dnsRecord->getType());
-        $this->assertSame(self::RECORD_VALUE, $dnsRecord->getValue());
-        $this->assertSame(self::RECORD_PRIO, $dnsRecord->getPrio());
     }
 
     /**
@@ -88,5 +78,23 @@ class DnsRecordTest extends TestCase
     public function testObjectIsImmutableWhenUnSettingProperty(DnsRecord $dnsRecord): void
     {
         unset($dnsRecord->dynamic);
+    }
+
+    /**
+     * All the properties should be the same as given when constructing the instance
+     *
+     * @depends testCanBeContructedWithPrio
+     *
+     * @param DnsRecord $dnsRecord
+     *
+     * @return void
+     */
+    public function testPropertiesShouldBeSameAsGivenInConstructor(DnsRecord $dnsRecord): void
+    {
+        $this->assertSame(self::RECORD_NAME, $dnsRecord->getName());
+        $this->assertSame(self::RECORD_TYPE, $dnsRecord->getType());
+        $this->assertSame(self::RECORD_VALUE, $dnsRecord->getValue());
+        $this->assertSame(self::RECORD_TTL, $dnsRecord->getTtl());
+        $this->assertSame(self::RECORD_PRIO, $dnsRecord->getPrio());
     }
 }

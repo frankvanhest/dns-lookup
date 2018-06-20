@@ -1,0 +1,1 @@
+domain.com.		3600 IN NS ns1.domain.com.
