@@ -1,0 +1,1 @@
+100.0.168.192.in-addr.arpa.		3600 IN PTR mailserver.example.com.

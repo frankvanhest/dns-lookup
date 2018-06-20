@@ -1,0 +1,1 @@
+domain.com.		3600 IN NAPTR 100 10 "U" "E2U+sip" "!^.*$!sip:customer-service@example.com!"

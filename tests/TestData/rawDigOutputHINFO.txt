@@ -1,0 +1,1 @@
+domain.com.		3600 IN HINFO PC-Intel-700mhz "Redhat Linux 7.1"
