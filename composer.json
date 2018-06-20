@@ -7,7 +7,7 @@
     "resolver"
   ],
   "homepage": "https://github.com/frankvanhest/dns-lookup",
-  "license": "IT",
+  "license": "MIT",
   "authors": [
     {
       "name": "Frank van Hest",
