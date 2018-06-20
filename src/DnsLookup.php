@@ -45,7 +45,11 @@ class DnsLookup
      */
     public function getRecordsByType(string $type): array
     {
-        return $this->convertRawDigOutputToDnsRecords($this->digForRecords($type));
+        if (($rawDigOutput = $this->digForRecords($type)) === null) {
+            return [];
+        }
+
+        return $this->convertRawDigOutputToDnsRecords($rawDigOutput);
     }
 
     /**
@@ -58,16 +62,20 @@ class DnsLookup
      */
     public function getAllRecords(): array
     {
-        return $this->convertRawDigOutputToDnsRecords($this->digForRecords());
+        if (($rawDigOutput = $this->digForRecords()) === null) {
+            return [];
+        }
+
+        return $this->convertRawDigOutputToDnsRecords($rawDigOutput);
     }
 
     /**
      * Run dig and retrieve the records
      *
      * @param string $type
-     * @return string
+     * @return string|null
      */
-    protected function digForRecords(string $type = 'ANY'): string
+    protected function digForRecords(string $type = 'ANY'): ?string
     {
         $nameserver = $this->nameserver ? '@' . $this->nameserver . ' ' : '';
         $rawDigOutput = shell_exec(
