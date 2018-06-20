@@ -1,7 +1,7 @@
 domain.com.		3600 IN SOA ns1.domain.com. hostmaster.domain.com. (
-                        				2018050601 ; serial
-                        				14400      ; refresh (4 hours)
-                        				1800       ; retry (30 minutes)
-                        				2419200    ; expire (4 weeks)
-                        				300        ; minimum (5 minutes)
-                        				)
+						2018050601 ; serial
+						14400      ; refresh (4 hours)
+						1800       ; retry (30 minutes)
+						2419200    ; expire (4 weeks)
+						300        ; minimum (5 minutes)
+						)

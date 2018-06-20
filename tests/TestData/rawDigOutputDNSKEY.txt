@@ -1,10 +1,10 @@
 domain.com.		3600 IN DNSKEY 257 3 8 (
-                        				AwEAAZ0aqu1rJ6orJynrRfNpPmayJZoAx9Ic2/Rl9VQW
-                        				LMHyjxxem3VUSoNUIFXERQbj0A9Ogp0zDM9YIccKLRd6
-                        				LmWiDCt7UJQxVdD+heb5Ec4qlqGmyX9MDabkvX2NvMws
-                        				UecbYBq8oXeTT9LRmCUt9KUt/WOi6DKECxoG/bWTykrX
-                        				yBR8elD+SQY43OAVjlWrVltHxgp4/rhBCvRbmdflunaP
-                        				Igu27eE2U4myDSLT8a4A0rB5uHG4PkOa9dIRs9y00M2m
-                        				Wf4lyPee7vi5few2dbayHXmieGcaAHrx76NGAABeY393
-                        				xjlmDNcUkF1gpNWUla4fWZbbaYQzA93mLdrng+M=
-                        				) ; KSK; alg = RSASHA256; key id = 45620
+						AwEAAZ0aqu1rJ6orJynrRfNpPmayJZoAx9Ic2/Rl9VQW
+						LMHyjxxem3VUSoNUIFXERQbj0A9Ogp0zDM9YIccKLRd6
+						LmWiDCt7UJQxVdD+heb5Ec4qlqGmyX9MDabkvX2NvMws
+						UecbYBq8oXeTT9LRmCUt9KUt/WOi6DKECxoG/bWTykrX
+						yBR8elD+SQY43OAVjlWrVltHxgp4/rhBCvRbmdflunaP
+						Igu27eE2U4myDSLT8a4A0rB5uHG4PkOa9dIRs9y00M2m
+						Wf4lyPee7vi5few2dbayHXmieGcaAHrx76NGAABeY393
+						xjlmDNcUkF1gpNWUla4fWZbbaYQzA93mLdrng+M=
+						) ; KSK; alg = RSASHA256; key id = 45620

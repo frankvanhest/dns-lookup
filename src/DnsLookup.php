@@ -45,7 +45,11 @@ class DnsLookup
      */
     public function getRecordsByType(string $type): array
     {
-        return $this->convertRawDigOutputToDnsRecords($this->digForRecords($type));
+        if (($rawDigOutput = $this->digForRecords($type)) === null) {
+            return [];
+        }
+
+        return $this->convertRawDigOutputToDnsRecords($rawDigOutput);
     }
 
     /**
@@ -58,16 +62,20 @@ class DnsLookup
      */
     public function getAllRecords(): array
     {
-        return $this->convertRawDigOutputToDnsRecords($this->digForRecords());
+        if (($rawDigOutput = $this->digForRecords()) === null) {
+            return [];
+        }
+
+        return $this->convertRawDigOutputToDnsRecords($rawDigOutput);
     }
 
     /**
      * Run dig and retrieve the records
      *
      * @param string $type
-     * @return string
+     * @return string|null
      */
-    protected function digForRecords(string $type = 'ANY'): string
+    protected function digForRecords(string $type = 'ANY'): ?string
     {
         $nameserver = $this->nameserver ? '@' . $this->nameserver . ' ' : '';
         $rawDigOutput = shell_exec(
@@ -112,17 +120,18 @@ class DnsLookup
             if ($nextDigLine !== null) {
                 $nextDigLine = str_replace("\t\t", ' ', $nextDigLine);
                 $recordNext = explode(' ', $nextDigLine, 5);
-                if (strstr($recordNext[0], $this->domain) === false && $recordNext[3] !== 'PTR') {
+                $type = $recordNext[3] ?? '';
+                if (strstr($recordNext[0], $this->domain) === false && $type !== 'PTR') {
                     if (strstr($record[0], $this->domain) !== false) {
                         $recordStorage = $record;
                         continue;
                     }
-                    $recordStorage[4] .= ' ' . $this->cleanUpValue($record[4]);
+                    $recordStorage[4] .= ' ' . $this->cleanUpValue($record[2]);
                     continue;
                 }
             } else {
                 if (!empty($recordStorage)) {
-                    $recordStorage[4] .= ' ' . $this->cleanUpValue($record[4]);
+                    $recordStorage[4] .= ' ' . $this->cleanUpValue($record[2]);
                 }
             }
 
