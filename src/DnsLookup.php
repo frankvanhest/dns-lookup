@@ -116,6 +116,10 @@ class DnsLookup
         foreach ($digLines as $index => $digLine) {
             $digLine = str_replace("\t\t", ' ', $digLine);
             $nextDigLine = $digLines[$index + 1] ?? null;
+            if (strstr($digLine, $this->domain) !== false) {
+                // Some record items can contain a tab, so replace it with a space
+                $digLine = str_replace("\t", ' ', $digLine);
+            }
             $record = explode(' ', $digLine, 5);
             if ($nextDigLine !== null) {
                 $nextDigLine = str_replace("\t\t", ' ', $nextDigLine);
@@ -139,6 +143,7 @@ class DnsLookup
                 $record = $recordStorage;
                 $recordStorage = [];
             }
+            $record[4] = trim(str_replace(['(', ')'], '', $record[4]));
             $dnsRecords[] = $this->buildDnsRecordFromParsedRawDigOutput($record);
         }
         return $dnsRecords;
