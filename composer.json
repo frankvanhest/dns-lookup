@@ -16,10 +16,10 @@
     }
   ],
   "require": {
-    "php": "^7.1"
+    "php": "^7.1 || ~8"
   },
   "require-dev": {
-    "phpunit/phpunit": "^7.2"
+    "phpunit/phpunit": "^7.2 || ~9"
   },
   "support": {
     "issues": "https://github.com/frankvanhest/dns-lookup/issues",
