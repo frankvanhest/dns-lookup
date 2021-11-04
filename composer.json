@@ -32,7 +32,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "FrankVanHest\\DnsLookup\\": "tests/"
+      "FrankVanHest\\DnsLookup\\Tests\\": "tests/"
     }
   }
 }

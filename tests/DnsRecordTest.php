@@ -27,7 +27,7 @@ class DnsRecordTest extends TestCase
      *
      * @return DnsRecord
      */
-    public function testCanBeContructedWithPrio(): DnsRecord
+    public function testCanBeConstructedWithPrio(): DnsRecord
     {
         $dnsRecord = new DnsRecord(
             self::RECORD_NAME, self::RECORD_TYPE, self::RECORD_VALUE, self::RECORD_TTL, self::RECORD_PRIO
@@ -53,8 +53,7 @@ class DnsRecordTest extends TestCase
     /**
      * The class should be immutable
      *
-     * @depends testCanBeContructedWithPrio
-     * @expectedException \RuntimeException
+     * @depends testCanBeConstructedWithPrio
      *
      * @param DnsRecord $dnsRecord
      *
@@ -62,14 +61,14 @@ class DnsRecordTest extends TestCase
      */
     public function testObjectIsImmutableWhenSettingProperty(DnsRecord $dnsRecord): void
     {
+        $this->expectException(\RuntimeException::class);
         $dnsRecord->dynamic = 'magic';
     }
 
     /**
      * The class should be immutable
      *
-     * @depends testCanBeContructedWithPrio
-     * @expectedException \RuntimeException
+     * @depends testCanBeConstructedWithPrio
      *
      * @param DnsRecord $dnsRecord
      *
@@ -77,13 +76,14 @@ class DnsRecordTest extends TestCase
      */
     public function testObjectIsImmutableWhenUnSettingProperty(DnsRecord $dnsRecord): void
     {
+        $this->expectException(\RuntimeException::class);
         unset($dnsRecord->dynamic);
     }
 
     /**
      * All the properties should be the same as given when constructing the instance
      *
-     * @depends testCanBeContructedWithPrio
+     * @depends testCanBeConstructedWithPrio
      *
      * @param DnsRecord $dnsRecord
      *
