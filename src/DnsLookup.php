@@ -79,7 +79,7 @@ class DnsLookup
     {
         $nameserver = $this->nameserver ? '@' . $this->nameserver . ' ' : '';
         $rawDigOutput = shell_exec(
-            'dig +nocmd ' . $nameserver . $this->domain . ' ' . $type . ' +multiline +noall +answer'
+            'dig +nocmd ' . $nameserver . $this->domain . ' ' . $type . ' +multiline +noall +answer +noidnout'
         );
 
         return $rawDigOutput;
