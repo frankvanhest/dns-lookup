@@ -1,0 +1,7 @@
+version: '3.9'
+services:
+  php-83:
+    image: wyrihaximusnet/php:8.3-nts-alpine-slim-dev
+    container_name: php-83
+    volumes:
+      - ./:/var/www/html/
