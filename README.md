@@ -1,5 +1,5 @@
 # DNS Lookup
-Simple library to retrieve DNS records with default OS resolver or specific nameserver.
+Simple library to retrieve DNS records using the OS's `dig` command (with default resolver or specific nameserver).
 
 ## Install
 Simple, just use composer
